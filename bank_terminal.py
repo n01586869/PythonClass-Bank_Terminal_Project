@@ -79,22 +79,38 @@ customer = Customer(name, pin)
 def getPin():
     pinCounter = 0
     while(True):
-        try:
-            pin = int(input("Please enter your PIN: "))
-            if (pin != customer.pin):
-                pinCounter += 1
-                if (pinCounter == 3):
-                    print("Sorry, too many incorrect tries. Please try again later")
-                    return False
-                print("That's wrong, please try again")
-                continue
-            break
-        except ValueError:
-            print("Please enter a valid number")
+        pin = (input("Please enter your PIN: "))
+        if (pin != str(customer.pin)):
+            pinCounter += 1
+            if (pinCounter == 3):
+                print("Sorry, too many incorrect tries. Please try again later")
+                return False
+            print("That's wrong, please try again")
+            continue
+        break
     return True
 
 if(getPin()):
-    print("Correct")
+    while(True):
+        selection = input("""Please press the corresponding key to make a selection (ie, press 1 to Display Balance):
+                        1. Display Balance
+                        2. Make a Withdrawal
+                        3. Make a Deposit
+                        4. Exit
+                        """)
+        match(selection):
+            case '1':
+                customer.displayBalance()
+            case '2':
+                customer.withdraw()
+            case '3':
+                customer.deposit()
+            case '4':
+                break
+    
+        selection = input("Would you like to perform another action? y/n: ")
+        if (selection.lower() == 'y'): continue
+        break
 
 # cust1 = Customer("Mark", 1234, 500)
 
