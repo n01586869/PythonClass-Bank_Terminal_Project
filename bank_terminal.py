@@ -117,7 +117,3 @@ if(getPin()):
         selection = input("Would you like to perform another action? y/n: ")
         if (selection.lower() == 'y'): continue
         exit()
-
-# cust1 = Customer("Mark", 1234, 500)
-
-# cust1.withdraw()
