@@ -11,47 +11,47 @@ class Customer:
     
     def withdraw(this):
         while(True):
-            selection = (input("""
-                Please press the corresponding key to select an option (ie, press 1 to withdraw $20):
-                1. $20
-                2. $40
-                3. $60
-                4. $80
-                5. $100
-                6. Custom amount
-                """))
-            match(selection):
-                case '1':
-                    amount = 20
-                    break
-                case '2':
-                    amount = 40
-                    break
-                case '3':
-                    amount = 60
-                    break
-                case '4':
-                    amount = 80
-                    break
-                case '5':
-                    amount = 100
-                    break
-                case '6':
-                    amount = (input("Please enter a custom amount: "))
-                    if(amount.isdigit()):
-                        amount = int(amount)
+            try:
+                selection = (input("""
+                    Please press the corresponding key to select an option (ie, press 1 to withdraw $20):
+                    1. $20
+                    2. $40
+                    3. $60
+                    4. $80
+                    5. $100
+                    6. Custom amount
+                    """))
+                match(selection):
+                    case '1':
+                        amount = 20
                         break
-                    print("Please enter a valid number")
-                    continue
-                case _:
-                    print("Please enter a valid number")
-                    continue
-                    
+                    case '2':
+                        amount = 40
+                        break
+                    case '3':
+                        amount = 60
+                        break
+                    case '4':
+                        amount = 80
+                        break
+                    case '5':
+                        amount = 100
+                        break
+                    case '6':
+                        amount = float((input("Please enter a custom amount: ")))
+                        break
+                    case _:
+                        print("Please enter a valid number")
+                        continue
+            except ValueError: #ValueError thrown if float cast tries to cast a String. if this occurs, user didn't enter a number
+                print("Please enter a valid number")
+
+        # after while loop exits, check for sufficient funds
         if (amount < this.balance):
             this.balance -= amount
             print("New balance: " + str(this.balance))
         else: print("Insufficient funds")
-
+            
     def deposit(this):
 
         while(True):
@@ -66,4 +66,4 @@ class Customer:
 
 cust1 = Customer("Mark", 1234, 500)
 
-cust1.deposit()
+cust1.withdraw()
