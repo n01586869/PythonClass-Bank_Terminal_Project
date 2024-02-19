@@ -7,7 +7,7 @@ class Customer:
         this.balance = 0
     
     def displayBalance(this):
-        print("Current balance: $" + str(this.balance))
+        print("Current balance: $" + "%.2f" % this.balance)
     
     def withdraw(this):
         while(True):
