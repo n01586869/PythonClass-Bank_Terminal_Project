@@ -90,6 +90,10 @@ def getPin():
         break
     return True
 
+def exit():
+    print("Exiting...")
+    sys.exit()
+
 if(getPin()):
     while(True):
         selection = input("""Please press the corresponding key to make a selection (ie, press 1 to Display Balance):
@@ -106,11 +110,11 @@ if(getPin()):
             case '3':
                 customer.deposit()
             case '4':
-                break
+                exit()
     
         selection = input("Would you like to perform another action? y/n: ")
         if (selection.lower() == 'y'): continue
-        break
+        exit()
 
 # cust1 = Customer("Mark", 1234, 500)
 
