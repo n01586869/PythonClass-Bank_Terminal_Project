@@ -12,6 +12,7 @@ class Customer:
     def withdraw(this):
         while(True):
             try:
+                # print selection table, wait for users input
                 selection = (input("""
                     Please press the corresponding key to select an option (ie, press 1 to withdraw $20):
                     1. $20
@@ -38,12 +39,13 @@ class Customer:
                         amount = 100
                         break
                     case '6':
+                        # get input and store it in amount
                         amount = float((input("Please enter a custom amount: ")))
                         break
                     case _:
                         print("Please enter a valid number")
                         continue
-            except ValueError: #ValueError thrown if float cast tries to cast a String. if this occurs, user didn't enter a number
+            except ValueError: #ValueError thrown if float cast tries to cast a String. if this occurs, it's because user didn't enter a number
                 print("Please enter a valid number")
 
         # after while loop exits, check for sufficient funds
@@ -55,27 +57,14 @@ class Customer:
     def deposit(this):
         while(True):
             try:
-                amount = float(input("Please enter the amount you would like to deposit: "))
-                this.balance += float(amount)
+                # get input and add it to balance
+                this.balance += float(input("Please enter the amount you would like to deposit: "))
                 print("New balance: $" + "%.2f" % this.balance)
                 break
-            except ValueError:
+            except ValueError: # If user enters something that isn't a number, this will trigger
                 print("Please enter a valid number")
 
-print("Please create an account")
-name = input("Please enter your name: ")
-
-while(True):
-    try:
-        pin = (input("Please enter a 4 digit PIN: "))
-        if (len(pin) != 4):
-            continue
-        pin = int(pin)
-        break
-    except ValueError: continue
-
-customer = Customer(name, pin)
-
+# Function to validate pin when signing in
 def getPin():
     pinCounter = 0
     while(True):
@@ -90,14 +79,33 @@ def getPin():
         break
     return True
 
+# Function to exit program
 def exit():
     print("Exiting...")
     sys.exit()
 
+# Start of program
+print("Please create an account")
+name = input("Please enter your name: ")
+
+# PIN loop incase user doesn't input 4 digits
+while(True):
+    try:
+        pin = (input("Please enter a 4 digit PIN: "))
+        if (len(pin) != 4): # if pin is less than 4, loop will reset
+            continue
+        pin = int(pin)
+        break
+    except ValueError: continue # if pin isn't digits, loop will reset
+
+# create customer's object with their name and pin
+customer = Customer(name, pin)
+
 print("Welcome to the bank!")
 
+# run getPin(), if user successfully inputs the pin, start main selection loop
 if(getPin()):
-    while(True):
+    while(True): # Main selection loop
         selection = input("""Please press the corresponding key to make a selection (ie, press 1 to Display Balance):
                         1. Display Balance
                         2. Make a Withdrawal
