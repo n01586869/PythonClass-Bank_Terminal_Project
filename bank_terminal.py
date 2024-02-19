@@ -11,7 +11,6 @@ class Customer:
     
     def withdraw(this):
         while(True):
-
             selection = (input("""
                 Please press the corresponding key to select an option (ie, press 1 to withdraw $20):
                 1. $20
@@ -44,7 +43,6 @@ class Customer:
                         break
                     print("Please enter a valid number")
                     continue
-                    
                 case _:
                     print("Please enter a valid number")
                     continue
@@ -54,9 +52,18 @@ class Customer:
             print("New balance: " + str(this.balance))
         else: print("Insufficient funds")
 
-    def deposit(this, amount):
-        this.balance += amount
+    def deposit(this):
+
+        while(True):
+            amount = input("Please enter the amount you would like to deposit: ")
+            if(amount.isdigit()):
+                this.balance += int(amount)
+                print("New balance: " + str(this.balance))
+                break
+            print("Please enter a valid number")
+
+        
 
 cust1 = Customer("Mark", 1234, 500)
 
-cust1.withdraw()
+cust1.deposit()
