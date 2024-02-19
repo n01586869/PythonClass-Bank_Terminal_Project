@@ -103,7 +103,7 @@ customer = Customer(name, pin)
 
 print("Welcome to the bank!")
 
-# run getPin(), if user successfully inputs the pin, start main selection loop
+# run getPin(), if user successfully inputs the pin, start main selection loop. If they fail 3 times, will be False and program will exit
 if(getPin()):
     while(True): # Main selection loop
         selection = input("""Please press the corresponding key to make a selection (ie, press 1 to Display Balance):
@@ -125,3 +125,4 @@ if(getPin()):
         selection = input("Would you like to perform another action? y/n: ")
         if (selection.lower() == 'y'): continue
         exit()
+else: exit()
