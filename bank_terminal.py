@@ -49,21 +49,22 @@ class Customer:
         # after while loop exits, check for sufficient funds
         if (amount < this.balance):
             this.balance -= amount
-            print("New balance: " + str(this.balance))
+            print("New balance: " + "%.2f" % this.balance)
         else: print("Insufficient funds")
             
     def deposit(this):
 
         while(True):
-            amount = input("Please enter the amount you would like to deposit: ")
-            if(amount.isdigit()):
-                this.balance += int(amount)
-                print("New balance: " + str(this.balance))
+            try:
+                amount = float(input("Please enter the amount you would like to deposit: "))
+                this.balance += float(amount)
+                print("New balance: " + "%.2f" % this.balance)
                 break
-            print("Please enter a valid number")
+            except ValueError:
+                print("Please enter a valid number")
 
         
 
 cust1 = Customer("Mark", 1234, 500)
 
-cust1.withdraw()
+cust1.deposit()
