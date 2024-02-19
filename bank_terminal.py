@@ -53,7 +53,6 @@ class Customer:
         else: print("Insufficient funds")
             
     def deposit(this):
-
         while(True):
             try:
                 amount = float(input("Please enter the amount you would like to deposit: "))
@@ -62,8 +61,6 @@ class Customer:
                 break
             except ValueError:
                 print("Please enter a valid number")
-
-        
 
 cust1 = Customer("Mark", 1234, 500)
 
