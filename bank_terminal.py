@@ -1,5 +1,3 @@
-import math
-
 class Customer:
     def __init__(this, name, pin, balance):
         this.name = name
@@ -49,7 +47,7 @@ class Customer:
         # after while loop exits, check for sufficient funds
         if (amount < this.balance):
             this.balance -= amount
-            print("New balance: " + "%.2f" % this.balance)
+            print("New balance: $" + "%.2f" % this.balance)
         else: print("Insufficient funds")
             
     def deposit(this):
@@ -57,11 +55,11 @@ class Customer:
             try:
                 amount = float(input("Please enter the amount you would like to deposit: "))
                 this.balance += float(amount)
-                print("New balance: " + "%.2f" % this.balance)
+                print("New balance: $" + "%.2f" % this.balance)
                 break
             except ValueError:
                 print("Please enter a valid number")
 
 cust1 = Customer("Mark", 1234, 500)
 
-cust1.deposit()
+cust1.withdraw()
