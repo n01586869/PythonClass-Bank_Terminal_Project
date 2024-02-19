@@ -79,7 +79,7 @@ customer = Customer(name, pin)
 def getPin():
     pinCounter = 0
     while(True):
-        pin = (input("Please enter your PIN: "))
+        pin = (input("Please enter your PIN to access your account: "))
         if (pin != str(customer.pin)):
             pinCounter += 1
             if (pinCounter == 3):
@@ -93,6 +93,8 @@ def getPin():
 def exit():
     print("Exiting...")
     sys.exit()
+
+print("Welcome to the bank!")
 
 if(getPin()):
     while(True):
