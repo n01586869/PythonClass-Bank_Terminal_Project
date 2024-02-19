@@ -45,7 +45,7 @@ class Customer:
                     case _:
                         print("Please enter a valid number")
                         continue
-            except ValueError: #ValueError thrown if float cast tries to cast a String. if this occurs, it's because user didn't enter a number
+            except ValueError: #ValueError is thrown when user doesn't enter a number (aka float cast didn't work)
                 print("Please enter a valid number")
 
         # after while loop exits, check for sufficient funds
@@ -94,7 +94,7 @@ while(True):
         pin = (input("Please enter a 4 digit PIN: "))
         if (len(pin) != 4): # if pin is less than 4, loop will reset
             continue
-        pin = int(pin)
+        pin = int(pin) # Cast pin to integer
         break
     except ValueError: continue # if pin isn't digits, loop will reset
 
