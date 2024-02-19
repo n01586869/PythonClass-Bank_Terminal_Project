@@ -1,8 +1,10 @@
+import sys
+
 class Customer:
-    def __init__(this, name, pin, balance):
+    def __init__(this, name, pin):
         this.name = name
         this.pin = pin
-        this.balance = balance
+        this.balance = 0
     
     def displayBalance(this):
         print(this.balance)
@@ -60,6 +62,40 @@ class Customer:
             except ValueError:
                 print("Please enter a valid number")
 
-cust1 = Customer("Mark", 1234, 500)
+print("Please create an account")
+name = input("Please enter your name: ")
 
-cust1.withdraw()
+while(True):
+    try:
+        pin = (input("Please enter a 4 digit PIN: "))
+        if (len(pin) != 4):
+            continue
+        pin = int(pin)
+        break
+    except ValueError: continue
+
+customer = Customer(name, pin)
+
+def getPin():
+    pinCounter = 0
+    while(True):
+        try:
+            pin = int(input("Please enter your PIN: "))
+            if (pin != customer.pin):
+                pinCounter += 1
+                if (pinCounter == 3):
+                    print("Sorry, too many incorrect tries. Please try again later")
+                    return False
+                print("That's wrong, please try again")
+                continue
+            break
+        except ValueError:
+            print("Please enter a valid number")
+    return True
+
+if(getPin()):
+    print("Correct")
+
+# cust1 = Customer("Mark", 1234, 500)
+
+# cust1.withdraw()
